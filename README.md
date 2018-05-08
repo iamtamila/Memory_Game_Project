@@ -10,3 +10,4 @@ Portfolio web page contains sevetal features:
 2. Menu: 
 Projects (shows content in the middle of the page in "Featured work" part);
 Contacts (shows contact information (icons) of social nets).
+3. All photos made by the autor.
