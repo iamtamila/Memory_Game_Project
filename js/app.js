@@ -1,6 +1,4 @@
-/*
- * Create a list that holds all of your cards
- */
+/* Create a list that holds all of your cards*/
 var cards = ['fa-diamond', 'fa-diamond',
              'fa-paper-plane-o', 'fa-paper-plane-o',
              'fa-anchor', 'fa-anchor',
@@ -24,7 +22,6 @@ function generateCard(card) {
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -32,7 +29,6 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
@@ -48,50 +44,43 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-/*flip cards */
-
-function initGame(){
+/*GAMEPLAY*/
+function myGame(){
   var deck = document.querySelector('.deck');
   var cardHTML = shuffle(cards).map(function(card){
     return generateCard(card);
   });
-
-
   deck.innerHTML = cardHTML.join('')
 }
-initGame();
+myGame();
 
 var allCards = document.querySelectorAll('.card');
 var openCards =[];
-var moves = 0;
 
+/*FLIP CARD */
 allCards.forEach(function(card) {
    card.addEventListener('click', function(e) {
           if (!card.classList.contains('open')&& !card.classList.contains('show') && !card.classList.contains('match')) {
             openCards.push(card);
             card.classList.add('open', 'show');
-
-            //Do match
-
             if (openCards.length == 2) {
               moveCount();
-              //DO MATCH
+              /*DO MATCH*/
               if (openCards[0].dataset.card == openCards[1].dataset.card) {
                   openCards[0].classList.add('match');
                   openCards[0].classList.add('open');
                   openCards[0].classList.add('show');
-
                   openCards[1].classList.add('match');
                   openCards[1].classList.add('open');
                   openCards[1].classList.add('show');
-
                   openCards = [];
-              }else {
+              }
+              /*DO NOT MATCH*/
+              else {
                 setTimeout(function(){
                   openCards.forEach(function(card){
                     card.classList.remove ('open','show');
                   });
-
                   openCards = [];
                 },1000);
               }
@@ -100,11 +89,10 @@ allCards.forEach(function(card) {
   });
 });
 
-//Count moves
+/*COUNT MOVES and REMOVE STARS*/
 var moves = 0;
 var moveCounter = document.querySelector('.moves');
 var stars = document.querySelector('.stars');
-
 
 function moveCount() {
   moves++;
@@ -120,9 +108,10 @@ function moveCount() {
   }
 }
 
+/*TIMER*/
 var second = 0,
     minute = 0;
-hour = 0;
+    hour = 0;
 var timer = document.querySelector(".timer");
 var interval;
 
@@ -138,25 +127,19 @@ function startTimer() {
             hour++;
             minute = 0;
         }
-    }, 1000);
+    }, 800);
 }
 
-
-function congratulations() {
-    if (openCards.length == 16) {
-        clearInterval(interval);
-        finalTime = timer.innerHTML;
-
-        // show congratulations modal
-        modal.classList.add("show");
-
-        // declare star rating variable
-        var starRating = document.querySelector(".stars").innerHTML;
-
-        //showing move, rating, time on modal
-        document.getElementById("finalMove").innerHTML = moves;
-        document.getElementById("starRating").innerHTML = starRating;
-        document.getElementById("totalTime").innerHTML = finalTime;
-
-    };
+/*STOP TIMER*/
+function stopTimer(interval) {
+  clearInterval(interval);
 }
+
+/*RESTART MYGAME*/
+let restart = document.querySelector('.restart');
+restart.addEventListener('click',function(){
+  moves = 0;
+  moveCounter.textContent = '';
+  stopTimer();
+  myGame();
+});
