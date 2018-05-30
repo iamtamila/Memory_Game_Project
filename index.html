@@ -1,66 +1,40 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Profile site</title>
-  <link href="styles.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <title>Matching Game</title>
+    <meta name="description" content="">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="css/app.css">
 </head>
-
 <body>
-	<header class="header">
-	<div class="header__inner">
-		<img class="header__logo" src="Tamila.jpg" alt="Tamila">
-		<div class="header__title">
-		<h1>Tamila Gassanova</h1>
-		<h3>front end developer</h3>
-	</div>
-	</div>
-	</header>
-<nav id="menu" class="nav">
-	<ul class="nav-list">
-		<li class="nav-item">
-			<a href="#main" accesskey="1">Projects</a>
-		</li>
-		<li class="nav-item">
-			<a href="#end" accesskey="2">Contacts</a>
-		</li>
-		</ul>
-</nav>
 
-<img class="kazbegi" src="kaz.jpg" alt="kazbegi">
+    <div class="container">
+        <header>
+            <h1>Matching Game</h1>
+        </header>
 
-	<h2>Featured Work</h2>
-<main id="main">
-	<div class="artbox">
-			<img class="picta" src="pixel.jpg" alt="PixelArtMaker">
-			<div class="description">
-			<h3>Pixel Art Maker</h3>
-			<p>Heart beats!</p>
-		</div>
-	</div>
-	<div class="artbox">
-			<img class="picta" src="bobo.jpg" alt="Bobik">
-    <div class="description">
-			<h3>Meet my dog!</h3>
-			<p>This is Bobik!</p>
-	</div>
-</div>
-	<div class="artbox">
-			<img class="picta" src="laika.jpg" alt="Laika">
-<div class="description">
-			<h3>Just another lovely dog</h3>
-			<p>So beautiful!</p>
-		</div>
-	</div>
-</main>
-<footer id="end">
-	<a href="https://www.linkedin.com/in/iamtamila/">
-		<img src="linkedin.jpg" alt="linkedIN" width="50" height="50">
-	</a>
-	<a href="https://www.instagram.com/iamtamila/">
-		<img src="insta.jpg" alt="instagram" width="50" height="50">
-	</a>
-</footer>
+        <section class="score-panel">
+        	<ul class="stars">
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        	</ul>
+
+        	<span class="moves">0</span> Moves
+          <div class="timer">
+          </div>
+
+            <div class="restart">
+        		<i class="fa fa-repeat"></i>
+        	</div>
+        </section>
+
+        <ul class="deck">
+        </ul>
+    </div>
+
+    <script src="js/app.js"></script>
 </body>
 </html>

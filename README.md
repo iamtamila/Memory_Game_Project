@@ -1,13 +1,20 @@
-# MyProfile
-Profile site
-# Description
-Profile site is a web site that is created as a project within Front-End Developer Nanodegree program and represents scholarship recipient - Tamila Gassanova as a junior front end developer, showing her first writing code skills.
+# Memory Game Project
 
-# Content
+## Table of Contents
 
-Portfolio web page contains sevetal features:
-1. Photo and name of the owner
-2. Menu: 
-Projects (shows content in the middle of the page in "Featured work" part);
-Contacts (shows contact information (icons) of social nets).
-3. All photos made by the autor.
+* [Instructions](#instructions)
+* [Contributing](#contributing)
+
+## Instructions
+
+The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+
+To get started, open `js/app.js` and start building out the app's functionality
+
+For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+
+## Contributing
+
+This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+
+For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
