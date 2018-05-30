@@ -44,6 +44,8 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+
+
 /*GAMEPLAY*/
 function myGame(){
   var deck = document.querySelector('.deck');
@@ -52,19 +54,20 @@ function myGame(){
   });
   deck.innerHTML = cardHTML.join('')
 }
-myGame();
+myGame()
 
 var allCards = document.querySelectorAll('.card');
 var openCards =[];
 
-/*FLIP CARD */
+/*GAME RULES */
 allCards.forEach(function(card) {
    card.addEventListener('click', function(e) {
           if (!card.classList.contains('open')&& !card.classList.contains('show') && !card.classList.contains('match')) {
             openCards.push(card);
             card.classList.add('open', 'show');
             if (openCards.length == 2) {
-              moveCount();
+              moveCount()
+
               /*DO MATCH*/
               if (openCards[0].dataset.card == openCards[1].dataset.card) {
                   openCards[0].classList.add('match');
@@ -74,6 +77,7 @@ allCards.forEach(function(card) {
                   openCards[1].classList.add('open');
                   openCards[1].classList.add('show');
                   openCards = [];
+                  winGame();
               }
               /*DO NOT MATCH*/
               else {
@@ -82,7 +86,7 @@ allCards.forEach(function(card) {
                     card.classList.remove ('open','show');
                   });
                   openCards = [];
-                },1000);
+                },500);
               }
             }
           }
@@ -131,15 +135,40 @@ function startTimer() {
 }
 
 /*STOP TIMER*/
-function stopTimer(interval) {
+function stopTimer() {
   clearInterval(interval);
+  startTimer ();
 }
 
 /*RESTART MYGAME*/
-let restart = document.querySelector('.restart');
+const restart = document.querySelector('.restart');
 restart.addEventListener('click',function(){
   moves = 0;
-  moveCounter.textContent = '';
-  stopTimer();
+  moveCounter.textContent = '0';
+stopTimer ();
   myGame();
 });
+
+/*GAME END*/
+
+var modal = document.querySelector('.modal');
+function winGame() {
+  if (openCards.length == 16) {
+    stopTimer();
+    modal.style.display = "block";
+
+  }
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
