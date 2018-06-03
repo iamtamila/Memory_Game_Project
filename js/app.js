@@ -137,7 +137,6 @@ function startTimer() {
 /*STOP TIMER*/
 function stopTimer() {
   clearInterval(interval);
-  startTimer ();
 }
 
 /*RESTART MYGAME*/
