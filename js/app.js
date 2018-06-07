@@ -67,7 +67,6 @@ allCards.forEach(function(card) {
             card.classList.add('open', 'show');
             if (openCards.length == 2) {
               moveCount()
-
               /*DO MATCH*/
               if (openCards[0].dataset.card == openCards[1].dataset.card) {
                   openCards[0].classList.add('match');
@@ -77,6 +76,7 @@ allCards.forEach(function(card) {
                   openCards[1].classList.add('open');
                   openCards[1].classList.add('show');
                   openCards = [];
+
                   winGame();
               }
               /*DO NOT MATCH*/
@@ -102,10 +102,7 @@ function moveCount() {
   moves++;
   moveCounter.innerHTML = moves;
   if (moves == 1) {
-        second = 0;
-        minute = 0;
-        hour = 0;
-        startTimer();
+    startTimer();
     }
   if (moves >= 14) {
     stars.removeChild(stars.childNodes[1]);
@@ -131,12 +128,19 @@ function startTimer() {
             hour++;
             minute = 0;
         }
-    }, 800);
+    }, 1000);
 }
 
 /*STOP TIMER*/
 function stopTimer() {
   clearInterval(interval);
+}
+/*RESET TIMER*/
+function resetTimer (){
+  second = 0;
+  minute = 0;
+  hour = 0;
+  timer.innerHTML = minute + " min " + second + " sec";
 }
 
 /*RESTART MYGAME*/
@@ -144,30 +148,52 @@ const restart = document.querySelector('.restart');
 restart.addEventListener('click',function(){
   moves = 0;
   moveCounter.textContent = '0';
-stopTimer ();
+  stopTimer ();
+  resetTimer ();
+  openCards = [];
+  //ADD RESTART FUNCTION
+
   myGame();
 });
 
+
 /*GAME END*/
 
-var modal = document.querySelector('.modal');
-function winGame() {
-  if (openCards.length == 16) {
-    stopTimer();
-    modal.style.display = "block";
+//When all cards match, change modal css so that modal is shown
+let matchedCards = document.getElementsByClassName('match');
+let modal = document.querySelector('.modal');
+let finalTime = document.querySelector('.finalTime');
+let finalRating = document.querySelector('.finalRating');
+let finalMoves = document.querySelector('.finalMoves');
 
+function winGame() {
+  if (matchedCards.length === 16) {
+    modal.style.display = "block";
+    finalRating.innerHTML = stars.innerHTML;
+    finalMoves.innerHTML = moveCounter.innerHTML;
+    finalTime.innerHTML = timer.innerHTML;
   }
 }
-
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
-}
+};
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+};
+//Play again button will clear modal and reset timer
+document.querySelector('.button').addEventListener('click', playAgain);
+document.querySelector('.button').addEventListener('click', resetTimer);
+document.querySelector('.restart').addEventListener('click', playAgain);
+
+function playAgain() {
+  modal.style.display = "none";
+  moveCounter.innerHTML = 0;
+  one.style.visibility = 'visible';
+  two.style.visibility = 'visible';
 }
