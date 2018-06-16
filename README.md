@@ -32,5 +32,6 @@ Game displays the current number of moves a user has made.
 External libraries used in the project:
 
 stylesheet "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+
 stylesheet "https://fonts.googleapis.com/css?family=Coda"
 
