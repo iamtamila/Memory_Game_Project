@@ -2,6 +2,7 @@
 
 * [Description](#Description)
 * [Rules](#Rules)
+* [Links](#Links)
 
 ## Description
 Memory Game Project is a simple cards game that player have to match by clicing them.
@@ -28,7 +29,7 @@ When the player starts a game, a displayed timer starts. Once the player wins th
 Game displays the current number of moves a user has made.
 
 
-//
+## Links
 External libraries used in the project:
 
 stylesheet "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
